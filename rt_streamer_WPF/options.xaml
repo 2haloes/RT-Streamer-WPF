@@ -1,0 +1,16 @@
+﻿<Window x:Class="rt_streamer_WPF.options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rt_streamer_WPF"
+        mc:Ignorable="d"
+        Title="Options" Height="194" Width="630">
+    <Grid>
+        <Button Name="button1" Height="46" Width="116" TabIndex="6" Margin="0,0,257,10" Click="button1_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
+        <Label Name="label2" Height="22" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="1" Margin="0,0,504,79" HorizontalAlignment="Right" VerticalAlignment="Bottom" >FFmpeg location</Label>
+        <Label Name="label1" Height="22" Width="76" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Margin="0,0,522,120" HorizontalAlignment="Right" VerticalAlignment="Bottom" >VLC location</Label>
+        <TextBox x:Name="VLCtextBox" HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="442"/>
+        <TextBox x:Name="FFmpegtextBox" HorizontalAlignment="Left" Height="23" Margin="136,51,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="442"/>
+    </Grid>
+</Window>
