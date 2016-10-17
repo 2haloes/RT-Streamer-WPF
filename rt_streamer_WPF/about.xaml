@@ -1,0 +1,54 @@
+﻿<Window x:Class="rt_streamer_WPF.about"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rt_streamer_WPF"
+        mc:Ignorable="d"
+        Title="about" Height="417.52" Width="569">
+    <Grid Width="569" Margin="0,0,-8,-2">
+        <Button Name="button3" Height="67" Width="184" TabIndex="7" Click="button3_Click" Margin="0,0,32,72" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            <TextBlock Height="auto" TextWrapping="Wrap">Rooster Teeth Because without them, this program wouldn't exist.</TextBlock>
+        </Button>
+        <Button Name="button2" Height="67" Width="184" TabIndex="6" Click="button2_Click" Margin="0,0,32,183" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            <TextBlock Height="auto" TextWrapping="Wrap">FFmpeg to download the program and updated source code</TextBlock>
+        </Button>
+        <Button Name="button1" Height="67" Width="184" TabIndex="5" Click="button1_Click" Margin="0,0,32,285" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            <TextBlock Height="auto" TextWrapping="Wrap">VLC website to download the program and updated source code</TextBlock>
+        </Button>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="144" Width="338">
+        This program REQUIRES VLC and FFmpeg
+        <LineBreak />
+        <LineBreak />
+        Windows: Go to the FFmpeg/VLC website and download the 
+                               window build then extract the zip file (Or install for 
+                               VLC) and link to the file in the options menu
+        <LineBreak />
+        <LineBreak />
+        Linux: Install them though your package manager of choice
+                        type in the name of your package manager for FFmpeg
+                        (For VLC, leave it alone unless you've messed with the
+                         vlc command)
+        </TextBlock>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="118" Width="338">
+            I am not related to Rooster Teeth, VLC or FFmpeg in any way,
+            I am simply a fan of both the software and the companies. This
+            tool is not designed to steal or leak anything, it is designed to help
+            people who cannot use the web player for any reason (I am one
+            of these people) being lightweight and flash free, I release this 
+            program in complete good fath that any downloaded videos are
+            downloaded for personal use only
+        </TextBlock>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="338">
+            This is my first program, written in C# to allow Linux support (Working on it)
+            If there is part of the code you think could be improved, please email me at rhysh@live.co.uk
+            or with Github with improvements and I'll give you credit here
+            (but give yourself a name to put here)
+        </TextBlock>
+        <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="353,326,0,0" VerticalAlignment="Top" Height="39" Width="184">
+            Licensed under MIT
+            <LineBreak></LineBreak>
+            Program (C) 2haloes
+        </TextBlock>
+    </Grid>
+</Window>
