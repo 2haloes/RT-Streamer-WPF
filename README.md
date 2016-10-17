@@ -1,4 +1,4 @@
-# RT-Streamer-WPF
+# RT-Streamer-WPF
 The RT streamer updated to WPF
 
 This is a program, designed to play and download videos from the Rooster Teeth website, it is built in C# and uses an MIT license
