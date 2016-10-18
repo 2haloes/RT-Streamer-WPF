@@ -21,6 +21,9 @@ Alternatively, you can use the web browser (Highly reccomended by me), while thi
 After this, you can pick the quality (Note that on older videos, 360p videos will go to 480p because there is no 360p) and where to download to if you are going to download and after a few moments (Dependent on the system and sometimes the internet connection) either VLC or FFmpeg will load and you should be able to get the RT content
 
 TODO:
+
 Make an icon for the program
+
 Allow FIRST videos to be played though the stream menu
+
 Port to GTK# for Linux users
