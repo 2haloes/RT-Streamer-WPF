@@ -7,10 +7,16 @@
         mc:Ignorable="d"
         Title="Options" Height="194" Width="630">
     <Grid>
-        <Button Name="SaveButton" Height="46" Width="116" TabIndex="6" Margin="0,0,257,10" Click="SaveButton_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
+        <Button Name="SaveButton" Height="46" Width="116" TabIndex="6" Margin="0,0,371,10" Click="SaveButton_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
         <Label Name="FFmpegLabel" Height="22" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="1" Margin="0,0,504,79" HorizontalAlignment="Right" VerticalAlignment="Bottom" >FFmpeg location</Label>
         <Label Name="VLCLabel" Height="22" Width="76" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Margin="0,0,522,120" HorizontalAlignment="Right" VerticalAlignment="Bottom" >VLC location</Label>
-        <TextBox x:Name="VLCtextBox" HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="442"/>
-        <TextBox x:Name="FFmpegtextBox" HorizontalAlignment="Left" Height="23" Margin="136,51,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="442"/>
+        <TextBox x:Name="VLCtextBox" HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="384"/>
+        <TextBox x:Name="FFmpegtextBox" HorizontalAlignment="Left" Height="23" Margin="136,51,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="384"/>
+        <Label x:Name="SaveConfirmLabel" Content="" HorizontalAlignment="Left" Margin="256,111,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="VLCOpenButton" Content="..." HorizontalAlignment="Left" Margin="525,10,0,0" VerticalAlignment="Top" Width="29" Height="23" Click="VLCOpenButton_Click"/>
+        <Button x:Name="FFmpegOpenButton" Content="..." HorizontalAlignment="Left" Margin="525,51,0,0" VerticalAlignment="Top" Width="29" Height="23" Click="FFmpegOpenButton_Click"/>
+        <Button x:Name="ResetButton" Height="30" Width="116" TabIndex="6" Margin="0,0,117,30" Click="ResetButton_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Reset" />
+        <Label x:Name="ResetConfirmLabel" Content="" HorizontalAlignment="Left" Margin="510,107,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ResetWarningLabel" Content=" (Does not log you out of the web browser)" HorizontalAlignment="Left" Margin="283,128,0,0" VerticalAlignment="Top" Width="243"/>
     </Grid>
 </Window>

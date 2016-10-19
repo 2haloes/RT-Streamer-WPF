@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace rt_streamer_WPF
 {
@@ -32,7 +21,35 @@ namespace rt_streamer_WPF
             Properties.Settings.Default.VLC = VLCtextBox.Text;
             Properties.Settings.Default.FFmpeg = FFmpegtextBox.Text;
             Properties.Settings.Default.Save();
-            Close();
+            SaveConfirmLabel.Content = "Saved";
+        }
+
+        private void VLCOpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog VLCFindFile = new OpenFileDialog();
+            VLCFindFile.Filter = "VLC exe | *.exe";
+            VLCFindFile.FilterIndex = 1;
+            if (VLCFindFile.ShowDialog() == true)
+            {
+                VLCtextBox.Text = VLCFindFile.FileName;
+            }
+        }
+
+        private void FFmpegOpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog FFmpegFindFile = new OpenFileDialog();
+            FFmpegFindFile.Filter = "FFmpeg exe | *.exe";
+            FFmpegFindFile.FilterIndex = 1;
+            if (FFmpegFindFile.ShowDialog() == true)
+            {
+                FFmpegtextBox.Text = FFmpegFindFile.FileName;
+            }
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+            ResetConfirmLabel.Content = "Settings reset";
         }
     }
 }
