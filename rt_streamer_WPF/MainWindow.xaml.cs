@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,46 +24,63 @@ namespace rt_streamer_WPF
     {
         public MainWindow()
         {
-            if (File.Exists("rtStream.conf"))
+            if (Properties.Settings.Default.HasRun)
             {
                 InitializeComponent();
             }
             else
             {
-                MessageBox.Show("This program on it's own is licensed MIT while VLC and FFmpeg have their own (Compatable) licenses, a copy of this license is included with the program and the source code is available upon request or available on my website. I am not related to FFmpeg, VLC or Rooster Teeth, I am simply a fan of Rooster Teeth and someone who wanted to make a nice open source project. To set up FFmpeg and VLC, use the instructions in the about page");
+                MessageBox.Show("Disclaimer: I am not related to FFmpeg, VLC or Rooster Teeth, I am simply a fan of Rooster Teeth and someone who wanted to watch RT on my rubbish laptop.");
 
+                MessageBoxResult FFmpegBoxResult = MessageBox.Show("Do you want to link to FFmpeg? This is required for downloading", "FFmpeg", MessageBoxButton.YesNo);
+                if (FFmpegBoxResult == MessageBoxResult.Yes)
+                {
+                    OpenFileDialog FFmpegFindFile = new OpenFileDialog();
+                    FFmpegFindFile.Filter = "FFmpeg exe | *.exe";
+                    FFmpegFindFile.FilterIndex = 1;
+                    if (FFmpegFindFile.ShowDialog() == true)
+                    {
+                            Properties.Settings.Default.FFmpeg = FFmpegFindFile.FileName;
+                    }
+                }
 
-                string[] lines = { null, null };
-                File.WriteAllLines("rtStream.conf", lines);
-
+                MessageBoxResult VLCBoxResult = MessageBox.Show("Do you want to link to VLC? This is required for Streaming", "VLC", MessageBoxButton.YesNo);
+                if (VLCBoxResult == MessageBoxResult.Yes)
+                {
+                    OpenFileDialog VLCFindFile = new OpenFileDialog();
+                    VLCFindFile.Filter = "VLC exe | *.exe";
+                    VLCFindFile.FilterIndex = 1;
+                    if (VLCFindFile.ShowDialog() == true)
+                    {
+                        Properties.Settings.Default.VLC = VLCFindFile.FileName;
+                    }
+                }
+                Properties.Settings.Default.HasRun = true;
+                Properties.Settings.Default.Save();
                 InitializeComponent();
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("It's a streamer, downloader and slight easter egger");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+       
+        private void About_Click(object sender, EventArgs e)
         {
             about ab = new about();
             ab.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Stream_Click(object sender, EventArgs e)
         {
             stream stream = new stream();
             stream.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Options_Click(object sender, EventArgs e)
         {
             options OP = new options();
             OP.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void RTBrowser_Click(object sender, RoutedEventArgs e)
         {
             webbrowse web = new webbrowse();
             web.Show();

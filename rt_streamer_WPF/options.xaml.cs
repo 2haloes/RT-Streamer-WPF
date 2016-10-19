@@ -23,17 +23,14 @@ namespace rt_streamer_WPF
         public options()
         {
             InitializeComponent();
-            string[] lines = File.ReadAllLines("rtStream.conf");
-            VLCtextBox.Text = lines[0];
-            FFmpegtextBox.Text = lines[1];
+            VLCtextBox.Text = Properties.Settings.Default.VLC;
+            FFmpegtextBox.Text = Properties.Settings.Default.FFmpeg;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines("rtStream.conf");
-            lines[0] = VLCtextBox.Text;
-            lines[1] = FFmpegtextBox.Text;
-            File.WriteAllLines("rtStream.conf", lines);
+            Properties.Settings.Default.VLC = VLCtextBox.Text;
+            Properties.Settings.Default.FFmpeg = FFmpegtextBox.Text;
             Close();
         }
     }

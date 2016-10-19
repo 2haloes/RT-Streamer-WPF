@@ -6,16 +6,15 @@
         xmlns:local="clr-namespace:rt_streamer_WPF"
         mc:Ignorable="d"
         Title="RT Streamer" Height="322" Width="523">
-    <Grid Height="335" Margin="6,0,11,-35">
-        <Button Name="button5" Height="76" Width="173" TabIndex="6" Click="button5_Click" Margin="0,0,287,176" HorizontalAlignment="Right" VerticalAlignment="Bottom">Browse RT site for URL</Button>
-        <Button Name="button4" Height="76" Width="173" TabIndex="4" Click="button4_Click" Margin="0,0,31,70" HorizontalAlignment="Right" VerticalAlignment="Bottom" >About</Button>
-        <Button Name="button3" Height="76" Width="173" TabIndex="3" Click="button3_Click" Margin="0,0,287,70" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Options</Button>
-        <Button Name="button2" Height="76" Width="173" TabIndex="2" Click="button2_Click" Margin="0,0,31,176" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Stream</Button>
-        <TextBlock Name="label1" Height="39" Width="429" FontSize="11" FontFamily="Microsoft Sans Serif" Margin="0,0,31,281" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap">This is the RT streamer/downloader
-        By default, the program will aim for the precompiled versions
-        If there are no precompiled included programs then please go into the options menu and
-        set a path for VLC and FFmpeg</TextBlock>
-        <Label x:Name="label" Content="A lot has been changed from V0.9, please report any issues that have encountered" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="447"/>
-
+    <Grid Margin="0,0,2,-1">
+        <Button Name="RTBrowser" Height="76" Width="173" TabIndex="6" Click="RTBrowser_Click" Margin="0,0,287,30" HorizontalAlignment="Right" VerticalAlignment="Bottom">Browse RT site for URL</Button>
+        <Button Name="About" Height="76" Width="173" TabIndex="4" Click="About_Click" Margin="0,0,31,121" HorizontalAlignment="Right" VerticalAlignment="Bottom" >About</Button>
+        <Button Name="Options" Height="76" Width="173" TabIndex="3" Click="Options_Click" Margin="0,0,287,121" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Options</Button>
+        <Button Name="Stream" Height="76" Width="173" TabIndex="2" Click="Stream_Click" Margin="0,0,31,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Stream</Button>
+        <TextBlock Name="InfoLabel" Height="38" Width="429" FontSize="11" FontFamily="Microsoft Sans Serif" Margin="0,0,39,240" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap">
+            This is the RT streamer/downloader, 
+            it currently requires VLC and FFmpeg to be present and linked in the options menu (Or when the program is first started up). 
+            This may change in the near feature</TextBlock>
+        <Label x:Name="WarningLabel" Content="A lot has been changed from V0.9, please report any issues that have encountered" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="447" Height="26"/>
     </Grid>
 </Window>
