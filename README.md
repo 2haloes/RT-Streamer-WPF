@@ -1,6 +1,8 @@
 # RT-Streamer-WPF
 The RT streamer updated to WPF
 
+Branches NOTE: Any branches labeled 'unstable' are not for use! They will likely not work, it's a peek into what I'm changing and it allows me to access changes from both machines I have (Main computer and rubbish laptop)
+
 This is a program, designed to play and download videos from the Rooster Teeth website, it is built in C# and uses an MIT license
 
 This program has been updated to run on WPF (From Winforms) as well as have a clean up of the code, reducing redundency of code by 3x in some cases!
