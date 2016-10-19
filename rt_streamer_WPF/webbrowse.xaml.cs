@@ -53,7 +53,7 @@ namespace rt_streamer_WPF
             {
                 if (!string.IsNullOrEmpty(findpage.FileName))
                 {
-                    StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).Url.ToString(), comboBox.Text, true, findpage.FileName);
+                    StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).DocumentText, comboBox.Text, true, findpage.FileName);
                 }
             }
         }

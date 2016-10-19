@@ -14,6 +14,7 @@ namespace rt_streamer_WPF
     {
         /// <summary>
         /// Check weather the URL is of the old or the new format (There is a difference)
+        /// The 'new' videos contain NewHLS- in the URL
         /// </summary>
         public static string OldOrNew(string id, string comboBox1)
         {
@@ -42,48 +43,8 @@ namespace rt_streamer_WPF
         }
 
         /// <summary>
-        /// Decide where to load VLC, based on if there is a setting set for VLC or not
-        /// </summary>
-        /// <returns></returns>
-        public static string vlcfile()
-        {
-            string vlc = null;
-            string[] file_lines = File.ReadAllLines("rtStream.conf");
-            if (file_lines[0] == "")
-            {
-                string location = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-                vlc = location + "/vlc/vlc.exe";
-            }
-            else
-            {
-                vlc = file_lines[0];
-            }
-            return vlc;
-        }
-
-        /// <summary>
-        /// Decide where to load FFmpeg, based on if there is a setting set for FFmpeg or not
-        /// </summary>
-        /// <returns></returns>
-        public static string ffmpegfile()
-        {
-            string ffmpeg = null;
-            string[] file_lines = File.ReadAllLines("rtStream.conf");
-            if (file_lines[1] == "")
-            {
-                string location = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-                ffmpeg = location + "/ffmpeg/ffmpeg.exe";
-            }
-            else
-            {
-                ffmpeg = file_lines[1];
-            }
-            return ffmpeg;
-        }
-
-        /// <summary>
         /// Find the video ID within a page if a URL or a HTML file were selected
-        /// Logs in if the video is for members or FIRST memebers only
+        /// I can't find a way to log in though C#,current workaround uses the web browser
         /// </summary>
         /// <param name="fullpage"></param>
         /// <returns></returns>
@@ -92,41 +53,10 @@ namespace rt_streamer_WPF
             string webpage = fullpage;
             int checkchar = 0;
             checkchar = webpage.IndexOf("file: ");
-            if (checkchar == -1 /*&& pageurl == null*/)
+            if (checkchar == -1)
             {
                 MessageBox.Show("The webpage you have input is invalid. It either isn't a rooster teeth page or it is for (first) members only. This doesn't let you bypass those requirements and you should sign up if you REALLY want that content");
                 return "";
-            }
-            else
-            {
-                /*using (var wc = new WebClient())
-                {
-
-                    string loginpage = wc.DownloadString("https://www.roosterteeth.com/login").ToString();
-                    int logincheckchar = loginpage.IndexOf("value=") + 7;
-                    string tokloginpage = loginpage.Remove(0, logincheckchar);
-                    tokloginpage = tokloginpage.Remove(loginpage.IndexOf('"'));
-                    string[] logininfo = File.ReadAllLines("rtstream.conf");
-
-
-                    NameValueCollection values = new NameValueCollection();
-                    values["_token"] = tokloginpage;
-                    values["username"] = logininfo[2];
-                    values["password"] = logininfo[3];
-
-                    byte[] response = wc.UploadValues("http://www.roosterteeth.com/login", "POST", values);
-
-                    string responseString = Encoding.Default.GetString(response);
-
-                    webpage = wc.DownloadString(pageurl);
-
-                    checkchar = webpage.IndexOf("file: ");
-                    if (checkchar == -1)
-                    {
-                        MessageBox.Show("The webpage you have input is invalid. It either isn't a rooster teeth page or it is for (first) members only. This doesn't let you bypass those requirements and you should sign up if you REALLY want that content");
-                        return "";
-                    }
-                }*/
             }
             checkchar = checkchar + 64;
             webpage = webpage.Remove(0, checkchar);
@@ -152,17 +82,15 @@ namespace rt_streamer_WPF
                 string playfile = OldOrNew(textBox1, comboBox1);
                 if (ffmpeg_bool)
                 {
-                    string FFmpeg = ffmpegfile();
                     Process ffmpeg_start = new Process();
-                    ffmpeg_start.StartInfo.FileName = FFmpeg;
+                    ffmpeg_start.StartInfo.FileName = Properties.Settings.Default.FFmpeg;
                     ffmpeg_start.StartInfo.Arguments = "-i " + playfile + " -c:v copy -c:a copy -f mpegts " + file_name;
                     ffmpeg_start.Start();
                     ffmpeg_start.WaitForExit();
                 }
                 else
                 {
-                    string vlc = vlcfile();
-                    Process.Start(vlc, " -vvv " + playfile + " --play-and-exit");
+                    Process.Start(Properties.Settings.Default.VLC, " -vvv " + playfile + " --play-and-exit");
                 }
                 return;
             }
@@ -174,17 +102,15 @@ namespace rt_streamer_WPF
                 string playfile = OldOrNew(webpage, comboBox1);
                 if (ffmpeg_bool)
                 {
-                    string FFmpeg = ffmpegfile();
                     Process ffmpeg_start = new Process();
-                    ffmpeg_start.StartInfo.FileName = FFmpeg;
+                    ffmpeg_start.StartInfo.FileName = Properties.Settings.Default.FFmpeg;
                     ffmpeg_start.StartInfo.Arguments = "-i " + playfile + " -c:v copy -c:a copy -f mpegts " + file_name;
                     ffmpeg_start.Start();
                     ffmpeg_start.WaitForExit();
                 }
                 else
                 {
-                    string vlc = vlcfile();
-                    Process.Start(vlc, " -vvv " + playfile + " --play-and-exit");
+                    Process.Start(Properties.Settings.Default.VLC, " -vvv " + playfile + " --play-and-exit");
                 }
                 return;
             }
@@ -201,17 +127,15 @@ namespace rt_streamer_WPF
 
                 if (ffmpeg_bool)
                 {
-                    string FFmpeg = ffmpegfile();
                     Process ffmpeg_start = new Process();
-                    ffmpeg_start.StartInfo.FileName = FFmpeg;
+                    ffmpeg_start.StartInfo.FileName = Properties.Settings.Default.FFmpeg;
                     ffmpeg_start.StartInfo.Arguments = "-i " + playfile + " -c:v copy -c:a copy -f mpegts " + file_name;
                     ffmpeg_start.Start();
                     ffmpeg_start.WaitForExit();
                 }
                 else
                 {
-                    string vlc = vlcfile();
-                    Process.Start(vlc, " -vvv " + playfile + " --play-and-exit");
+                    Process.Start(Properties.Settings.Default.VLC, " -vvv " + playfile + " --play-and-exit");
                 }
 
                 return;
@@ -230,17 +154,15 @@ namespace rt_streamer_WPF
 
             if (ffmpeg_bool)
             {
-                string FFmpeg = ffmpegfile();
                 Process ffmpeg_start = new Process();
-                ffmpeg_start.StartInfo.FileName = FFmpeg;
+                ffmpeg_start.StartInfo.FileName = Properties.Settings.Default.FFmpeg;
                 ffmpeg_start.StartInfo.Arguments = "-i " + playfile + " -c:v copy -c:a copy -f mpegts " + file_name;
                 ffmpeg_start.Start();
                 ffmpeg_start.WaitForExit();
             }
             else
             {
-                string vlc = vlcfile();
-                Process.Start(vlc, " -vvv " + playfile + " --play-and-exit");
+                Process.Start(Properties.Settings.Default.VLC, " -vvv " + playfile + " --play-and-exit");
             }
 
             return;
