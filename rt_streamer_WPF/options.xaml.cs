@@ -27,10 +27,11 @@ namespace rt_streamer_WPF
             FFmpegtextBox.Text = Properties.Settings.Default.FFmpeg;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.VLC = VLCtextBox.Text;
             Properties.Settings.Default.FFmpeg = FFmpegtextBox.Text;
+            Properties.Settings.Default.Save();
             Close();
         }
     }

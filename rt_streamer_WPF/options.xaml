@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Options" Height="194" Width="630">
     <Grid>
-        <Button Name="SaveButton" Height="46" Width="116" TabIndex="6" Margin="0,0,257,10" Click="button1_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
+        <Button Name="SaveButton" Height="46" Width="116" TabIndex="6" Margin="0,0,257,10" Click="SaveButton_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
         <Label Name="FFmpegLabel" Height="22" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="1" Margin="0,0,504,79" HorizontalAlignment="Right" VerticalAlignment="Bottom" >FFmpeg location</Label>
         <Label Name="VLCLabel" Height="22" Width="76" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Margin="0,0,522,120" HorizontalAlignment="Right" VerticalAlignment="Bottom" >VLC location</Label>
         <TextBox x:Name="VLCtextBox" HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="442"/>
