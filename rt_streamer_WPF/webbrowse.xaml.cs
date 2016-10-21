@@ -27,24 +27,24 @@ namespace rt_streamer_WPF
             (WFH.Child as WebBrowser).Navigate("http://www.roosterteeth.com");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Back_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).GoBack();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Forward_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).GoForward();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Refresh_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).Refresh();
         }
 
 
         //FFmpeg stream
-        private void button4_Click(object sender, EventArgs e)
+        private void Download_Click(object sender, EventArgs e)
         {
             Microsoft.Win32.SaveFileDialog findpage = new Microsoft.Win32.SaveFileDialog();
             findpage.Filter = "Video file | *.mp4";
@@ -59,7 +59,7 @@ namespace rt_streamer_WPF
         }
 
         // VLC stream
-        private void button5_Click(object sender, EventArgs e)
+        private void Stream_Click(object sender, EventArgs e)
         {
             StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).DocumentText, comboBox.Text, false, null);
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rt_streamer_WPF"
         mc:Ignorable="d"
-        Title="Options" Height="194" Width="630">
+        Title="Options" Height="194" Width="630" Icon="RT_streamer_logo.ico">
     <Grid>
         <Button Name="SaveButton" Height="46" Width="116" TabIndex="6" Margin="0,0,371,10" Click="SaveButton_Click"  HorizontalAlignment="Right" VerticalAlignment="Bottom" >Save</Button>
         <Label Name="FFmpegLabel" Height="22" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="1" Margin="0,0,504,79" HorizontalAlignment="Right" VerticalAlignment="Bottom" >FFmpeg location</Label>

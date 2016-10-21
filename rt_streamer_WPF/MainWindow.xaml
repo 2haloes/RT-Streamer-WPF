@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rt_streamer_WPF"
         mc:Ignorable="d"
-        Title="RT Streamer" Height="322" Width="523">
+        Title="RT Streamer" Height="322" Width="523" Icon="RT_streamer_logo.ico">
     <Grid Margin="0,0,2,-1">
         <Button Name="RTBrowser" Height="76" Width="173" TabIndex="6" Click="RTBrowser_Click" Margin="0,0,287,121" HorizontalAlignment="Right" VerticalAlignment="Bottom">Browse RT site for URL</Button>
         <Button Name="About" Height="76" Width="173" TabIndex="4" Click="About_Click" Margin="0,0,31,121" HorizontalAlignment="Right" VerticalAlignment="Bottom" >About</Button>
