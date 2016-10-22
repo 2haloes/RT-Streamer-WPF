@@ -24,6 +24,7 @@ namespace rt_streamer_WPF
     {
         public MainWindow()
         {
+            // If the program has run then skip the first time start up
             if (Properties.Settings.Default.HasRun)
             {
                 InitializeComponent();
@@ -32,6 +33,7 @@ namespace rt_streamer_WPF
             {
                 MessageBox.Show("Disclaimer: I am not related to FFmpeg, VLC or Rooster Teeth, I am simply a fan of Rooster Teeth and someone who wanted to watch RT on my rubbish laptop.");
 
+                // This allows the user to find a FFmpeg *.exe file (For downloading)
                 MessageBoxResult FFmpegBoxResult = MessageBox.Show("Do you want to link to FFmpeg? This is required for downloading", "FFmpeg", MessageBoxButton.YesNo);
                 if (FFmpegBoxResult == MessageBoxResult.Yes)
                 {
@@ -44,6 +46,7 @@ namespace rt_streamer_WPF
                     }
                 }
 
+                // This allows the user to find a VLC *exe file (For streaming)
                 MessageBoxResult VLCBoxResult = MessageBox.Show("Do you want to link to VLC? This is required for Streaming", "VLC", MessageBoxButton.YesNo);
                 if (VLCBoxResult == MessageBoxResult.Yes)
                 {
@@ -55,13 +58,16 @@ namespace rt_streamer_WPF
                         Properties.Settings.Default.VLC = VLCFindFile.FileName;
                     }
                 }
+                // Changes the settings so that the program doesn't run the first time setup again
                 Properties.Settings.Default.HasRun = true;
+                // Saves the settings so that they can be used in future
                 Properties.Settings.Default.Save();
                 InitializeComponent();
             }
         }
 
-       
+       // These methods open new windows depending on what button was clicked
+       // (e.g. clicking About opens the about window)
         private void About_Click(object sender, EventArgs e)
         {
             about ab = new about();

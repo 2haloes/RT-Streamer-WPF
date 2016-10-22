@@ -25,6 +25,7 @@ namespace rt_streamer_WPF
             InitializeComponent();
         }
 
+        // These methods load websites based on the default browser
         private void button1_Click(object sender, EventArgs e)
         {
             Process.Start("http://www.videolan.org/vlc/");

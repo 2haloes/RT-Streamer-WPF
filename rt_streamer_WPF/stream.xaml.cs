@@ -25,9 +25,16 @@ namespace rt_streamer_WPF
         public stream()
         {
             InitializeComponent();
+            // Defaults the quality selection to 1080p
             QualityComboBox.SelectedIndex = 4;
         }
 
+        /// <summary>
+        /// Opens a file dialog that allows the user to locate the HTML file
+        /// of a page that hosts a video (As long as the user can access it within their browser)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HTMLButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog findpage = new OpenFileDialog();
@@ -43,6 +50,7 @@ namespace rt_streamer_WPF
             }
         }
 
+        // These 2 methods load VLC and FFmpeg respectively, true for FFmpeg and false for VLC
         private void StreamButton_Click(object sender, EventArgs e)
         {
             StreamExtract.LoadProgram(QualityComboBox.Text, VideoIDTextBox.Text, HTMLTextBox.Text, URLTextBox.Text, false, DownloadToTextBox.Text);
@@ -53,6 +61,11 @@ namespace rt_streamer_WPF
             StreamExtract.LoadProgram(QualityComboBox.Text, VideoIDTextBox.Text, HTMLTextBox.Text, URLTextBox.Text, true, DownloadToTextBox.Text);
         }
 
+        /// <summary>
+        /// Opens a file dialog to find where to save the video file (If needed)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DownloadToButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog findpage = new SaveFileDialog();

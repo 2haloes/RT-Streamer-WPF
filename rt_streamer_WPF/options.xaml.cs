@@ -12,10 +12,16 @@ namespace rt_streamer_WPF
         public options()
         {
             InitializeComponent();
+            // This takes the paths for VLC and FFmpeg and puts them in the textboxes
             VLCtextBox.Text = Properties.Settings.Default.VLC;
             FFmpegtextBox.Text = Properties.Settings.Default.FFmpeg;
         }
 
+        /// <summary>
+        /// This saves the settings for VLC and FFmpeg and changes the text of an invisable label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.VLC = VLCtextBox.Text;
@@ -24,6 +30,11 @@ namespace rt_streamer_WPF
             SaveConfirmLabel.Content = "Saved";
         }
 
+        /// <summary>
+        /// When clicked, it opens a file dialog that allows the user to find and select VLC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VLCOpenButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog VLCFindFile = new OpenFileDialog();
@@ -35,6 +46,11 @@ namespace rt_streamer_WPF
             }
         }
 
+        /// <summary>
+        /// When clicked, it opens a file dialog that allows the user to find and select FFmpeg
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FFmpegOpenButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog FFmpegFindFile = new OpenFileDialog();
@@ -46,6 +62,12 @@ namespace rt_streamer_WPF
             }
         }
 
+        /// <summary>
+        /// Resets the settings within the program 
+        /// (Does not effect the browser window)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
