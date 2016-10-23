@@ -6,16 +6,16 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:local="clr-namespace:rt_streamer_WPF"
         mc:Ignorable="d"
-        Title="RT Browser" Height="480" Width="640">
+        Title="RT Browser" Height="480" Width="640" Icon="RT_streamer_logo.ico">
     <Grid>
         <WindowsFormsHost Name="WFH"  HorizontalAlignment="Left" Height="400" Margin="0,39,0,0" VerticalAlignment="Top" Width="622">
             <wf:WebBrowser Navigating="RTPageLoad" />
         </WindowsFormsHost>
-        <Button x:Name="Backbutton" Content="Back" Click="button1_Click"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
-        <Button x:Name="Forwardbutton" Content="Forward" Click="button2_Click"  HorizontalAlignment="Left" Margin="69,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
-        <Button x:Name="Refreshbutton" Content="Refresh" Click="button3_Click"  HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
-        <Button x:Name="Downloadbutton" Content="Download" Click="button4_Click"  HorizontalAlignment="Left" Margin="482,10,0,0" VerticalAlignment="Top" Width="60" Height="24" />
-        <Button x:Name="Streambutton" Content="Stream" Click="button5_Click"  HorizontalAlignment="Left" Margin="559,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
+        <Button x:Name="Backbutton" Content="Back" Click="Back_Click"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
+        <Button x:Name="Forwardbutton" Content="Forward" Click="Forward_Click"  HorizontalAlignment="Left" Margin="69,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
+        <Button x:Name="Refreshbutton" Content="Refresh" Click="Refresh_Click"  HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
+        <Button x:Name="Downloadbutton" Content="Download" Click="Download_Click"  HorizontalAlignment="Left" Margin="482,10,0,0" VerticalAlignment="Top" Width="60" Height="24" />
+        <Button x:Name="Streambutton" Content="Stream" Click="Stream_Click"  HorizontalAlignment="Left" Margin="559,10,0,0" VerticalAlignment="Top" Width="48" Height="24" />
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="387,10,0,0" VerticalAlignment="Top" Width="78">
             <ComboBoxItem>240</ComboBoxItem>
             <ComboBoxItem>360</ComboBoxItem>

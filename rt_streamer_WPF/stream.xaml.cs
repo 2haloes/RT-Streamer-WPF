@@ -25,10 +25,17 @@ namespace rt_streamer_WPF
         public stream()
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 4;
+            // Defaults the quality selection to 1080p
+            QualityComboBox.SelectedIndex = 4;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Opens a file dialog that allows the user to locate the HTML file
+        /// of a page that hosts a video (As long as the user can access it within their browser)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HTMLButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog findpage = new OpenFileDialog();
             findpage.Filter = "Rooster Teeth web page|*.html;*.htm";
@@ -37,23 +44,29 @@ namespace rt_streamer_WPF
             {
                 if (!string.IsNullOrEmpty(findpage.FileName) && File.Exists(findpage.FileName))
                 {
-                    textBox2.Text = "";
-                    textBox2.Text = findpage.FileName;
+                    HTMLTextBox.Text = "";
+                    HTMLTextBox.Text = findpage.FileName;
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // These 2 methods load VLC and FFmpeg respectively, true for FFmpeg and false for VLC
+        private void StreamButton_Click(object sender, EventArgs e)
         {
-            StreamExtract.LoadProgram(comboBox1.Text, textBox1.Text, textBox2.Text, textBox3.Text, false, download_to.Text);
+            StreamExtract.LoadProgram(QualityComboBox.Text, VideoIDTextBox.Text, HTMLTextBox.Text, URLTextBox.Text, false, DownloadToTextBox.Text);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void DownloadButton_Click(object sender, EventArgs e)
         {
-            StreamExtract.LoadProgram(comboBox1.Text, textBox1.Text, textBox2.Text, textBox3.Text, true, download_to.Text);
+            StreamExtract.LoadProgram(QualityComboBox.Text, VideoIDTextBox.Text, HTMLTextBox.Text, URLTextBox.Text, true, DownloadToTextBox.Text);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Opens a file dialog to find where to save the video file (If needed)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DownloadToButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog findpage = new SaveFileDialog();
             findpage.Filter = "Video file | *.mp4";
@@ -62,8 +75,8 @@ namespace rt_streamer_WPF
             {
                 if (!string.IsNullOrEmpty(findpage.FileName))
                 {
-                    download_to.Text = "";
-                    download_to.Text = findpage.FileName;
+                    DownloadToTextBox.Text = "";
+                    DownloadToTextBox.Text = findpage.FileName;
                 }
             }
         }

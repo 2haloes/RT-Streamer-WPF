@@ -1,8 +1,6 @@
 # RT-Streamer-WPF
 The RT streamer updated to WPF
 
-Branches NOTE: Any branches labeled 'unstable' are not for use! They will likely not work, it's a peek into what I'm changing and it allows me to access changes from both machines I have (Main computer and rubbish laptop)
-
 This is a program, designed to play and download videos from the Rooster Teeth website, it is built in C# and uses an MIT license
 
 This program has been updated to run on WPF (From Winforms) as well as have a clean up of the code, reducing redundency of code by 3x in some cases!
@@ -23,9 +21,6 @@ Alternatively, you can use the web browser (Highly reccomended by me), while thi
 After this, you can pick the quality (Note that on older videos, 360p videos will go to 480p because there is no 360p) and where to download to if you are going to download and after a few moments (Dependent on the system and sometimes the internet connection) either VLC or FFmpeg will load and you should be able to get the RT content
 
 TODO:
-
-Make an icon for the program
-
-Allow FIRST videos to be played though the stream menu
-
-Port to GTK# for Linux users
+Make an icon for the program
+Allow FIRST videos to be played though the stream menu
+Port to GTK# for Linux users

@@ -21,30 +21,50 @@ namespace rt_streamer_WPF
     {
         public webbrowse()
         {
-            
             InitializeComponent();
+            // Forms browser is used because it can stop JS errors, this does that
             (WFH.Child as WebBrowser).ScriptErrorsSuppressed = true;
+            // Loads the RT site
             (WFH.Child as WebBrowser).Navigate("http://www.roosterteeth.com");
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Goes back a page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Back_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).GoBack();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Goes forward a page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Forward_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).GoForward();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Refreshes the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Refresh_Click(object sender, EventArgs e)
         {
             (WFH.Child as WebBrowser).Refresh();
         }
 
 
-        //FFmpeg stream
-        private void button4_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Opens a save file dialog to find wherre to save the video pefore loading FFmpeg
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Download_Click(object sender, EventArgs e)
         {
             Microsoft.Win32.SaveFileDialog findpage = new Microsoft.Win32.SaveFileDialog();
             findpage.Filter = "Video file | *.mp4";
@@ -53,17 +73,26 @@ namespace rt_streamer_WPF
             {
                 if (!string.IsNullOrEmpty(findpage.FileName))
                 {
-                    StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).Url.ToString(), comboBox.Text, true, findpage.FileName);
+                    StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).DocumentText, comboBox.Text, true, findpage.FileName);
                 }
             }
         }
 
-        // VLC stream
-        private void button5_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Loads VLC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Stream_Click(object sender, EventArgs e)
         {
             StreamExtract.LoadFromBrowser((WFH.Child as WebBrowser).DocumentText, comboBox.Text, false, null);
         }
 
+        /// <summary>
+        /// When the page loads, it's put into the URL bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RTPageLoad(object sender,
         WebBrowserNavigatingEventArgs e)
         {

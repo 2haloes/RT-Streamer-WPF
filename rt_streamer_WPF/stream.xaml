@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rt_streamer_WPF"
         mc:Ignorable="d"
-        Title="stream" Height="436.235" Width="534.388">
+        Title="stream" Height="436.235" Width="534.388" Icon="RT_streamer_logo.ico">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="496">
             To load the video, the video-id is needed (I don't know about the real name but I'll stick with it)
@@ -21,26 +21,26 @@
                 You can paste the URL of the page the video is on, however, it is required that the video be public for this
                 to work (Not avaliable for members or First users only videos)
         </TextBlock>
-        <Label x:Name="label" Content="Video ID:" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Height="24"/>
-        <TextBox Name="textBox1" Height="20" Width="362" TabIndex="0" Margin="0,0,43,177" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
-        <Label x:Name="label_Copy" Content="Video page file:" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Height="28"/>
-        <Button Name="button1" Height="20" Width="26" TabIndex="5" Click="button1_Click" Margin="0,0,30,137" HorizontalAlignment="Right" VerticalAlignment="Bottom" >...</Button>
-        <TextBox Name="textBox2" Height="20" Width="332" TabIndex="4" Margin="0,0,73,137" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
-        <Label x:Name="label_Copy1" Content="Video page URL:" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Name="textBox3" Height="20" Width="332" TabIndex="10" Margin="0,0,73,95" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
-        <Label x:Name="label_Copy2" Content="Quality:" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Height="32"/>
-        <ComboBox Name="comboBox1" Height="21" Width="121" TabIndex="4" Margin="0,0,324,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <Label x:Name="VideoIDLabel" Content="Video ID:" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Height="24"/>
+        <TextBox Name="VideoIDTextBox" Height="20" Width="362" TabIndex="0" Margin="0,0,43,177" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
+        <Label x:Name="HTMLLabel" Content="Video page file:" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Height="28"/>
+        <Button Name="HTMLButton" Height="20" Width="26" TabIndex="5" Click="HTMLButton_Click" Margin="0,0,30,137" HorizontalAlignment="Right" VerticalAlignment="Bottom" >...</Button>
+        <TextBox Name="HTMLTextBox" Height="20" Width="332" TabIndex="4" Margin="0,0,73,137" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
+        <Label x:Name="URLLabel" Content="Video page URL:" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Name="URLTextBox" Height="20" Width="332" TabIndex="10" Margin="0,0,73,95" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" ></TextBox>
+        <Label x:Name="QualityLabel" Content="Quality:" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Height="32"/>
+        <ComboBox Name="QualityComboBox" Height="21" Width="121" TabIndex="4" Margin="0,0,324,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
             <ComboBoxItem>240</ComboBoxItem>
             <ComboBoxItem>360</ComboBoxItem>
             <ComboBoxItem>480</ComboBoxItem>
             <ComboBoxItem>720</ComboBoxItem>
             <ComboBoxItem>1080</ComboBoxItem>
         </ComboBox>
-        <Button Name="button2" Height="23" Width="109" TabIndex="8" Click="button2_Click" Margin="0,0,336,17" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Start streaming!</Button>
-        <Label x:Name="label1" Content="Download to:" HorizontalAlignment="Left" Margin="231,317,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1_Copy" Height="20" Width="26" TabIndex="5" Click="button3_Click" Margin="0,0,30,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="..." />
-        <TextBox x:Name="download_to" Height="20" Width="128" TabIndex="4" Margin="0,0,73,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" />
-        <Button x:Name="button4" Height="23" Width="109" TabIndex="8" Click="button4_Click" Margin="0,0,92,17" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Start downloading!" />
+        <Button Name="StreamButton" Height="23" Width="109" TabIndex="8" Click="StreamButton_Click" Margin="0,0,336,17" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Start streaming!</Button>
+        <Label x:Name="DownloadToLabel" Content="Download to:" HorizontalAlignment="Left" Margin="231,317,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DownloadToButton" Height="20" Width="26" TabIndex="5" Click="DownloadToButton_Click" Margin="0,0,30,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="..." />
+        <TextBox x:Name="DownloadToTextBox" Height="20" Width="128" TabIndex="4" Margin="0,0,73,56" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="NoWrap" />
+        <Button x:Name="DownloadButton" Height="23" Width="109" TabIndex="8" Click="DownloadButton_Click" Margin="0,0,92,17" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Start downloading!" />
 
     </Grid>
 </Window>
