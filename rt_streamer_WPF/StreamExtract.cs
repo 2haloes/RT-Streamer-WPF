@@ -16,10 +16,10 @@ namespace rt_streamer_WPF
         /// Check weather the URL is of the old or the new format (There is a difference)
         /// The 'new' videos contain NewHLS- in the URL
         /// </summary>
-        public static string OldOrNew(string id, string comboBox1)
+        public static string OldOrNew(string id, string Quality)
         {
             string webpage = id;
-            string playfile = "http://wpc.1765A.taucdn.net/801765A/video/uploads/videos/" + webpage + "/NewHLS-" + comboBox1 + "P.m3u8";
+            string playfile = "http://wpc.1765A.taucdn.net/801765A/video/uploads/videos/" + webpage + "/NewHLS-" + Quality + "P.m3u8";
 
             // If someone knows how to try not to force a crash to check the URL, please suggest an improvement
             try
@@ -29,13 +29,13 @@ namespace rt_streamer_WPF
             }
             catch (WebException)
             {
-                if (comboBox1 == "360")
+                if (Quality == "360")
                 {
                     playfile = playfile.Replace("NewHLS-360", "480");
                 }
                 else
                 {
-                    playfile = playfile.Replace("NewHLS-" + comboBox1, comboBox1);
+                    playfile = playfile.Replace("NewHLS-" + Quality, Quality);
                 }
             }
             playfile = playfile.Insert(4, "s");
@@ -67,19 +67,18 @@ namespace rt_streamer_WPF
         /// <summary>
         /// Loads FFmpeg or VLC, depending on what button is clicked
         /// </summary>
-        /// <param name="comboBox1"></param>
-        /// <param name="textBox1"></param>
-        /// <param name="textBox2"></param>
-        /// <param name="textBox3"></param>
+        /// <param name="Quality"></param>
+        /// <param name="VideoID"></param>
+        /// <param name="HTMLPage"></param>
+        /// <param name="PageURL"></param>
         /// <param name="ffmpeg_bool"></param>
         /// <param name="file_name"></param>
-        public static void LoadProgram(string comboBox1, string textBox1, string textBox2, string textBox3, bool ffmpeg_bool, string file_name)
+        public static void LoadProgram(string Quality, string VideoID, string HTMLPage, string PageURL, bool ffmpeg_bool, string file_name)
         {
-            string quality = comboBox1;
             //Text box 1 filled
-            if (textBox2 == "" && textBox3 == "")
+            if (HTMLPage == "" && PageURL == "")
             {
-                string playfile = OldOrNew(textBox1, comboBox1);
+                string playfile = OldOrNew(VideoID, Quality);
                 if (ffmpeg_bool)
                 {
                     Process ffmpeg_start = new Process();
@@ -95,11 +94,11 @@ namespace rt_streamer_WPF
                 return;
             }
             //Text box 2 filled
-            else if (textBox1 == "" && textBox3 == "")
+            else if (VideoID == "" && PageURL == "")
             {
-                string webpage = File.ReadAllText(textBox2);
+                string webpage = File.ReadAllText(HTMLPage);
                 webpage = findid(webpage, null);
-                string playfile = OldOrNew(webpage, comboBox1);
+                string playfile = OldOrNew(webpage, Quality);
                 if (ffmpeg_bool)
                 {
                     Process ffmpeg_start = new Process();
@@ -115,15 +114,15 @@ namespace rt_streamer_WPF
                 return;
             }
             //Text box 3 filled
-            else if (textBox1 == "" && textBox2 == "")
+            else if (VideoID == "" && HTMLPage == "")
             {
                 string webpage = null;
                 using (var wc = new System.Net.WebClient())
                 {
-                    webpage = wc.DownloadString(textBox3);
+                    webpage = wc.DownloadString(PageURL);
                 }
-                webpage = findid(webpage, textBox3);
-                string playfile = OldOrNew(webpage, comboBox1);
+                webpage = findid(webpage, PageURL);
+                string playfile = OldOrNew(webpage, Quality);
 
                 if (ffmpeg_bool)
                 {
@@ -146,11 +145,19 @@ namespace rt_streamer_WPF
             }
         }
 
-        public static void LoadFromBrowser(string textBox3, string comboBox1, bool ffmpeg_bool, string file_name)
+        /// <summary>
+        /// Loads from the browser, defaults loading from a HTML page
+        /// Allows loading of FIRST member content though the browser (As long as the user logs into the inbuilt browser)
+        /// </summary>
+        /// <param name="HTMLPage"></param>
+        /// <param name="Quality"></param>
+        /// <param name="ffmpeg_bool"></param>
+        /// <param name="file_name"></param>
+        public static void LoadFromBrowser(string HTMLPage, string Quality, bool ffmpeg_bool, string file_name)
         {
-            string webpage = textBox3;
+            string webpage = HTMLPage;
             webpage = findid(webpage, null);
-            string playfile = OldOrNew(webpage, comboBox1);
+            string playfile = OldOrNew(webpage, Quality);
 
             if (ffmpeg_bool)
             {
